@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SubmitPlanTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="receiverId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="senderId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitPlanTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitPlanTaskResult" type="tns:PackageOfDataSet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PackageOfDataSet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exception" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="PackageOfDataSet" nillable="true" type="tns:PackageOfDataSet" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitPlanTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitPlanTask" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitPlanTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskHttpGetIn">
+    <wsdl:part name="receiverId" type="s:string" />
+    <wsdl:part name="senderId" type="s:string" />
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="param" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskHttpGetOut">
+    <wsdl:part name="Body" element="tns:PackageOfDataSet" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskHttpPostIn">
+    <wsdl:part name="receiverId" type="s:string" />
+    <wsdl:part name="senderId" type="s:string" />
+    <wsdl:part name="appName" type="s:string" />
+    <wsdl:part name="title" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+    <wsdl:part name="param" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SubmitPlanTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:PackageOfDataSet" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSCYWZHSoap">
+    <wsdl:operation name="SubmitPlanTask">
+      <wsdl:input message="tns:SubmitPlanTaskSoapIn" />
+      <wsdl:output message="tns:SubmitPlanTaskSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceSCYWZHHttpGet">
+    <wsdl:operation name="SubmitPlanTask">
+      <wsdl:input message="tns:SubmitPlanTaskHttpGetIn" />
+      <wsdl:output message="tns:SubmitPlanTaskHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceSCYWZHHttpPost">
+    <wsdl:operation name="SubmitPlanTask">
+      <wsdl:input message="tns:SubmitPlanTaskHttpPostIn" />
+      <wsdl:output message="tns:SubmitPlanTaskHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSCYWZHSoap" type="tns:ServiceSCYWZHSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitPlanTask">
+      <soap:operation soapAction="http://tempuri.org/SubmitPlanTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SubmitPlanTaskAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSCYWZHSoap12" type="tns:ServiceSCYWZHSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitPlanTask">
+      <soap12:operation soapAction="http://tempuri.org/SubmitPlanTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SubmitPlanTaskAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSCYWZHHttpGet" type="tns:ServiceSCYWZHHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="SubmitPlanTask">
+      <http:operation location="/SubmitPlanTask" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSCYWZHHttpPost" type="tns:ServiceSCYWZHHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="SubmitPlanTask">
+      <http:operation location="/SubmitPlanTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceSCYWZH">
+    <wsdl:port name="ServiceSCYWZHSoap" binding="tns:ServiceSCYWZHSoap">
+      <soap:address location="http://218.92.115.55/M_Lhgl/ServiceSCYWZH.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSCYWZHSoap12" binding="tns:ServiceSCYWZHSoap12">
+      <soap12:address location="http://218.92.115.55/M_Lhgl/ServiceSCYWZH.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSCYWZHHttpGet" binding="tns:ServiceSCYWZHHttpGet">
+      <http:address location="http://218.92.115.55/M_Lhgl/ServiceSCYWZH.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSCYWZHHttpPost" binding="tns:ServiceSCYWZHHttpPost">
+      <http:address location="http://218.92.115.55/M_Lhgl/ServiceSCYWZH.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

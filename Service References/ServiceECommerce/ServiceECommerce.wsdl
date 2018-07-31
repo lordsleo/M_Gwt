@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="UpdateMaterialsPurchasing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strPurchaseOrderId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strGoodsId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="strActualGoodsNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMaterialsPurchasingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMaterialsPurchasingResult" type="tns:PackageOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PackageOfBoolean">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsSuccess" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exception" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="UpdatePurchasingOrderDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strPurchaseOrderId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strGoodsId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strOrderId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strOrderState" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="strNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePurchasingOrderDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePurchasingOrderDetailResult" type="tns:PackageOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PackageOfBoolean" nillable="true" type="tns:PackageOfBoolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateMaterialsPurchasingSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMaterialsPurchasing" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMaterialsPurchasingResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePurchasingOrderDetail" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePurchasingOrderDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingHttpGetIn">
+    <wsdl:part name="strPurchaseOrderId" type="s:string" />
+    <wsdl:part name="strGoodsId" type="s:string" />
+    <wsdl:part name="strActualGoodsNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingHttpGetOut">
+    <wsdl:part name="Body" element="tns:PackageOfBoolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailHttpGetIn">
+    <wsdl:part name="strPurchaseOrderId" type="s:string" />
+    <wsdl:part name="strGoodsId" type="s:string" />
+    <wsdl:part name="strOrderId" type="s:string" />
+    <wsdl:part name="strOrderState" type="s:string" />
+    <wsdl:part name="strNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:PackageOfBoolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingHttpPostIn">
+    <wsdl:part name="strPurchaseOrderId" type="s:string" />
+    <wsdl:part name="strGoodsId" type="s:string" />
+    <wsdl:part name="strActualGoodsNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMaterialsPurchasingHttpPostOut">
+    <wsdl:part name="Body" element="tns:PackageOfBoolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailHttpPostIn">
+    <wsdl:part name="strPurchaseOrderId" type="s:string" />
+    <wsdl:part name="strGoodsId" type="s:string" />
+    <wsdl:part name="strOrderId" type="s:string" />
+    <wsdl:part name="strOrderState" type="s:string" />
+    <wsdl:part name="strNum" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePurchasingOrderDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:PackageOfBoolean" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceECommerceSoap">
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <wsdl:input message="tns:UpdateMaterialsPurchasingSoapIn" />
+      <wsdl:output message="tns:UpdateMaterialsPurchasingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <wsdl:input message="tns:UpdatePurchasingOrderDetailSoapIn" />
+      <wsdl:output message="tns:UpdatePurchasingOrderDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceECommerceHttpGet">
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <wsdl:input message="tns:UpdateMaterialsPurchasingHttpGetIn" />
+      <wsdl:output message="tns:UpdateMaterialsPurchasingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <wsdl:input message="tns:UpdatePurchasingOrderDetailHttpGetIn" />
+      <wsdl:output message="tns:UpdatePurchasingOrderDetailHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceECommerceHttpPost">
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <wsdl:input message="tns:UpdateMaterialsPurchasingHttpPostIn" />
+      <wsdl:output message="tns:UpdateMaterialsPurchasingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <wsdl:input message="tns:UpdatePurchasingOrderDetailHttpPostIn" />
+      <wsdl:output message="tns:UpdatePurchasingOrderDetailHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceECommerceSoap" type="tns:ServiceECommerceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <soap:operation soapAction="http://tempuri.org/UpdateMaterialsPurchasing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateMaterialsPurchasingAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <soap:operation soapAction="http://tempuri.org/UpdatePurchasingOrderDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdatePurchasingOrderDetailAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceECommerceSoap12" type="tns:ServiceECommerceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <soap12:operation soapAction="http://tempuri.org/UpdateMaterialsPurchasing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateMaterialsPurchasingAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePurchasingOrderDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdatePurchasingOrderDetailAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceECommerceHttpGet" type="tns:ServiceECommerceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <http:operation location="/UpdateMaterialsPurchasing" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <http:operation location="/UpdatePurchasingOrderDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceECommerceHttpPost" type="tns:ServiceECommerceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="UpdateMaterialsPurchasing">
+      <http:operation location="/UpdateMaterialsPurchasing" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchasingOrderDetail">
+      <http:operation location="/UpdatePurchasingOrderDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceECommerce">
+    <wsdl:port name="ServiceECommerceSoap" binding="tns:ServiceECommerceSoap">
+      <soap:address location="http://218.92.115.55/E-Commerce/ServiceECommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceECommerceSoap12" binding="tns:ServiceECommerceSoap12">
+      <soap12:address location="http://218.92.115.55/E-Commerce/ServiceECommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceECommerceHttpGet" binding="tns:ServiceECommerceHttpGet">
+      <http:address location="http://218.92.115.55/E-Commerce/ServiceECommerce.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceECommerceHttpPost" binding="tns:ServiceECommerceHttpPost">
+      <http:address location="http://218.92.115.55/E-Commerce/ServiceECommerce.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
